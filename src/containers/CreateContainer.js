@@ -53,12 +53,16 @@ class CreateContainer extends React.Component {
       }
     }
 
+    savePaper = () => {
+
+    }
+
     render () {
       return (
         <div className="create">
             {this.state.topicShow 
               ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow}/> 
-              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle}/>}
+              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper}/>}
         </div>
       );
     }
