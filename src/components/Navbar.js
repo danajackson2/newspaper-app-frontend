@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom'
 class Navbar extends React.Component {
     render() {
         return (
-            <div class="ui secondary  menu">
-                <NavLink class="item" to="/" onClick={this.props.changeShowOrCreate}>Home</NavLink>
-                <NavLink class="item" to="/papers" onClick={this.props.changeShowOrCreate}>Read Paper</NavLink>
-                <div class="right menu">
-                    <NavLink class="item" to="/signup">Signup</NavLink>
-                    <NavLink class="item"to="/login">Login</NavLink>
+            <div className="ui secondary  menu">
+                <NavLink className="item" to="/" onClick={this.props.createPage}>Home</NavLink>
+                <NavLink className="item" to="/papers" onClick={this.props.showPage}>Read Paper</NavLink>
+                <div className="right menu">
+                    <NavLink className="item" to="/signup">Signup</NavLink>
+                    <NavLink className="item"to="/login">Login</NavLink>
                 </div>
             </div>
         )

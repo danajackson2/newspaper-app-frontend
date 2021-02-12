@@ -6,21 +6,25 @@ import CreateContainer from './containers/CreateContainer'
 import { Route } from 'react-router-dom'
 class App extends React.Component {
   state = {
-    createPage: true
+    page: "create"
   }
 
   showComponent = () => {
-    return this.state.createPage ?  <Route exact path="/" component={CreateContainer} /> : <Route exact path="/papers" component={ShowContainer} />
+    return this.state.page === "create" ?  <Route exact path="/" component={CreateContainer} /> : <Route exact path="/papers" component={ShowContainer} />
   }
 
-  changeShowOrCreate = () => {
-    this.setState(prevState => {return {createPage: !prevState.createPage}})
+  showPage = () => {
+    this.setState({page: "show"})
+  }
+
+  createPage = () => {
+    this.setState({page: "create"})
   }
 
   render () {
     return (
       <div className="App">
-        < Navbar changeShowOrCreate={this.changeShowOrCreate}/>
+        < Navbar showPage={this.showPage} createPage={this.createPage}/>
         {this.showComponent()}
       </div>
     )
