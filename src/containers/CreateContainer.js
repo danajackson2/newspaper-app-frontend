@@ -58,14 +58,14 @@ class CreateContainer extends React.Component {
     }
 
     savePaper = () => {
-      console.log(this.state.paper)
       fetch(NEW_PAPER_URL,{
         method: 'POST',
         headers : {'content-type':'application/json'},
         body: JSON.stringify({paper: this.state.paper})
       })
       .then(res => res.json())
-      .then(data => this.props.setSelectedPaper(data))
+      // .then(data => this.props.setSelectedPaper(data))
+      .then(console.log)
     }
     
     render () {

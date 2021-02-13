@@ -1,5 +1,6 @@
 import React from 'react'
 import ArticleCard from '../components/ArticleCard'
+import { Link } from 'react-router-dom'
 
 class ArticlesContainer extends React.Component {
 
@@ -10,7 +11,10 @@ class ArticlesContainer extends React.Component {
             <label>Paper Title</label>
             <input onChange={(e) => this.props.handleTitle(e.target.value)}></input>
             {this.props.selectedTopics.map(t => < ArticleCard topic={t} handleArticle={this.props.handleArticle}/>)}
-            <button onClick={this.props.savePaper}>Create My Paper</button>
+            {/* <NavLink className="item" to="/papers" >Read Paper</NavLink> */}
+            <Link to="/papers">
+              <button onClick={this.props.savePaper}>Create My Paper</button>
+            </Link>
         </div>
       );
     }
