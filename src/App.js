@@ -6,7 +6,8 @@ import CreateContainer from './containers/CreateContainer'
 import { Route } from 'react-router-dom'
 class App extends React.Component {
   state = {
-    page: "create"
+    page: "create",
+    selectedPaper: {}
   }
 
   showComponent = () => {
