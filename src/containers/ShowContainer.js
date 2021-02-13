@@ -13,10 +13,9 @@ class ShowContainer extends React.Component {
     render () {
       return (
         <div className="show">
-            ShowContainer
+            Show Container
             <SideBar />
-            <PaperContainer />
-            {/* Render today's paper that was created */}
+            <PaperContainer paper={this.props.paper}/>
         </div>
       );
     }
