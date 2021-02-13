@@ -65,7 +65,7 @@ class CreateContainer extends React.Component {
         body: JSON.stringify({paper: this.state.paper})
       })
       .then(res => res.json())
-      .then(console.log)
+      .then(data => this.props.setSelectedPaper(data))
     }
     
     render () {

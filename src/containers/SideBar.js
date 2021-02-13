@@ -4,7 +4,7 @@ class SideBar extends React.Component {
     render () {
       return (
         <div className="topics">
-            SideBar
+            Side Bar
             {/* Code for Searchbox*/}
             {/* Render PaperList Component*/}
         </div>
