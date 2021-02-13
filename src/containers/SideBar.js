@@ -3,10 +3,10 @@ import React from 'react'
 class SideBar extends React.Component {
     render () {
       return (
-        <div className="topics">
+        <div className="sideBar">
             Side Bar
             {/* Code for Searchbox*/}
-            {/* Render PaperList Component*/}
+            {this.props.papers.map(paper => <li>{paper.user_id}</li>)}
         </div>
       )
     }
