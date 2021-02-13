@@ -3,7 +3,7 @@ import TopicsContainer from './TopicsContainer'
 import ArticlesContainer from './ArticlesContainer'
 
 const topicsArray = ['Arts', 'Automobiles', 'Books', 'Business', 'Fashion', 'Food', 'Health', 'Home', 'Movies', 'Obituaries', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Technology', 'Theater', 'Travel', 'America', 'World']
-
+const NEW_PAPER_URL = 'http://localhost:3000/papers'
 class CreateContainer extends React.Component {
 
     state={
@@ -11,7 +11,7 @@ class CreateContainer extends React.Component {
         topics: topicsArray,
         selectedTopics: [],
         custom: "",
-        paper: {title: '', articles: []
+        paper: {title: '', date: '', articles: []
       }
     }
 
@@ -53,16 +53,27 @@ class CreateContainer extends React.Component {
       }
     }
 
-    savePaper = () => {
-
+    handleTitle = (text) => {
+      this.setState(prevState => ({paper: {...prevState.paper, title: text}}))
     }
 
+    savePaper = () => {
+      console.log(this.state.paper)
+      fetch(NEW_PAPER_URL,{
+        method: 'POST',
+        headers : {'content-type':'application/json'},
+        body: JSON.stringify({paper: this.state.paper})
+      })
+      .then(res => res.json())
+      .then(console.log)
+    }
+    
     render () {
       return (
         <div className="create">
             {this.state.topicShow 
               ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow}/> 
-              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper}/>}
+              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle}/>}
         </div>
       );
     }
