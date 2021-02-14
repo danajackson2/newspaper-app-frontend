@@ -28,10 +28,10 @@ class ArticleCard extends React.Component {
 
   render() {
     return (
-      <div className="article-card card">
+      <div className="col card" style={{margin: '5px', padding: '5px'}}>
         {this.props.topic}
         {this.state.articles[0] && <ViewArticleChoice changeCurrent={this.changeCurrent} currentView={this.state.currentView} articles={this.state.articles}/>}
-        <button onClick={() => this.props.handleArticle(this.state.articles[this.state.currentView])}>Add Article To Your Paper</button>  
+        <button class="btn btn-outline-primary" onClick={() => this.props.handleArticle(this.state.articles[this.state.currentView])}>Add Article To Your Paper</button>  
         {/* <ul>{this.state.articles.map(article => <li onClick={() => this.props.handleArticle(article)}>{article.title}</li>)}</ul> */}
       </div>
     )
