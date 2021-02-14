@@ -50,6 +50,8 @@ class CreateContainer extends React.Component {
             paper: {...prevState.paper, articles: prevState.paper.articles.concat(article)}
           }
         })
+      } else if (this.state.paper.articles.length === 10) {
+        alert('Congratulations, you have chosen 10 articles! Scroll to the bottom of the page to create your paper.')
       }
     }
 
