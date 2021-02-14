@@ -19,7 +19,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper}/>} /> 
-        <Route exact path="/papers" render={() => <ShowContainer paper={this.state.selectedPaper}/>} />
+        <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper}/>} />
         {/* <Footer /> */}
       </div>
     )

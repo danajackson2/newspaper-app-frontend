@@ -28,7 +28,7 @@ class ArticlesContainer extends React.Component {
           </div>
           <hr></hr><br/>
           <Link to="/papers" className={'row justify-content-md-center'}>
-            <button className={"btn btn-outline-primary"} style={{width:'25%'}} onClick={this.props.savePaper}>Create My Paper</button>
+            <button className={"btn btn-outline-secondary"} style={{width:'25%'}} onClick={this.props.savePaper}>Create My Paper</button>
           </Link><br/>
         </div>
       );

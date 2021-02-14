@@ -18,7 +18,7 @@ class ShowContainer extends React.Component {
       return (
         <div className="show">
             Show Container
-            <SideBar papers={this.state.papers}/>
+            <SideBar {...this.props.routerProps} papers={this.state.papers}/>
             <PaperContainer paper={this.props.paper}/>
         </div>
       );
