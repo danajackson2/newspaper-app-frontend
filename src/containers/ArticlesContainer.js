@@ -11,7 +11,12 @@ class ArticlesContainer extends React.Component {
             <label>Paper Title</label>
             <input onChange={(e) => this.props.handleTitle(e.target.value)}></input>
             {this.props.selectedTopics.map(t => < ArticleCard topic={t} handleArticle={this.props.handleArticle}/>)}
-            {/* <NavLink className="item" to="/papers" >Read Paper</NavLink> */}
+            <div>
+              Selected Articles
+              <ul>
+                {this.props.selectedArticles.map(a => <li>{a.title} <span onClick={() => this.props.removeArticle(a)}>❌</span> </li>)}
+              </ul>
+            </div>
             <Link to="/papers">
               <button onClick={this.props.savePaper}>Create My Paper</button>
             </Link>

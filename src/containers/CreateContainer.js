@@ -57,6 +57,12 @@ class CreateContainer extends React.Component {
       this.setState(prevState => ({paper: {...prevState.paper, title: text}}))
     }
 
+    removeArticle = (article) => {
+      this.setState(prevState => ({
+          paper: {...prevState.paper, articles: prevState.paper.articles.filter(a => a !== article)}
+        }))
+    }
+
     savePaper = () => {
       fetch(NEW_PAPER_URL,{
         method: 'POST',
@@ -73,7 +79,7 @@ class CreateContainer extends React.Component {
         <div className="create">
             {this.state.topicShow 
               ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow}/> 
-              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle}/>}
+              : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle}/>}
         </div>
       );
     }
