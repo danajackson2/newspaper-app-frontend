@@ -2,15 +2,15 @@ import React from 'react'
 
 function ViewArticleChoice({articles, currentView, changeCurrent}){
     return (
-        <div class='container'>
+        <div className={'container'} style={{padding: '10px'}}>
             <div class='row'>
-                <button class="btn btn-sm btn-outline-primary col-2" onClick={() => changeCurrent('down')} className='left-arrow'>⬅</button>
-                <div class='col-8'>
-                    {articles[currentView].title}
-                    {articles[currentView].author}
-                    {articles[currentView].description}
+                <button style={{height: '40px', alignSelf:'center'}} className={"btn-outline-primary btn btn-lg col-1"} onClick={() => changeCurrent('down')}>⬅</button>
+                <div className={'col-10'} style={{borderColor: 'black', borderStyle:'solid', borderWidth:'1px', borderRadius:'3px', height:'260px',padding: '5px', backgroundColor:'#edf4ff'}}>
+                    <h4>{articles[currentView].title}</h4>
+                    <h4>{articles[currentView].author}</h4>
+                    <p>{articles[currentView].description}</p>
                 </div>
-                <button class="btn btn-sm btn-outline-primary col-2" onClick={() => changeCurrent('up')} className='right-arrow'>⮕</button>
+                <button style={{height: '40px', alignSelf:'center'}} className={"btn-outline-primary btn btn-lg col-1"} onClick={() => changeCurrent('up')}>⮕</button>
             </div>
         </div>
     )

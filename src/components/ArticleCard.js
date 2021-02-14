@@ -9,7 +9,8 @@ class ArticleCard extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://newsapi.org/v2/everything?q=${this.props.topic}&sortBy=relevancy&sortB[…]=popularity&language=en&apiKey=2cb9ebfb65744b58ba65671c72708d72`)
+    // fetch(`http://newsapi.org/v2/everything?q=${this.props.topic}&sortBy=relevancy&sortB[…]=popularity&language=en&apiKey=2cb9ebfb65744b58ba65671c72708d72`)
+    fetch('http://localhost:3000/articles')    
     .then(resp => resp.json())
     .then(data => this.setState({articles: data.articles.splice(0, 10)}))
   }
@@ -28,11 +29,10 @@ class ArticleCard extends React.Component {
 
   render() {
     return (
-      <div className="col card" style={{margin: '5px', padding: '5px'}}>
-        {this.props.topic}
+      <div className="col card" style={{margin: '5px', padding: '5px', height: '370px', width:'400px'}}>
+        <h3 style={{padding:'5px', margin:'0px'}}>{this.props.topic}</h3>
         {this.state.articles[0] && <ViewArticleChoice changeCurrent={this.changeCurrent} currentView={this.state.currentView} articles={this.state.articles}/>}
-        <button class="btn btn-outline-primary" onClick={() => this.props.handleArticle(this.state.articles[this.state.currentView])}>Add Article To Your Paper</button>  
-        {/* <ul>{this.state.articles.map(article => <li onClick={() => this.props.handleArticle(article)}>{article.title}</li>)}</ul> */}
+        <button style={{position: 'absolute', bottom: '5px', margin:'5px', left:'25%', width:'50%'}} className="btn btn-outline-primary" onClick={() => this.props.handleArticle(this.state.articles[this.state.currentView])}>Add Article To Paper</button> 
       </div>
     )
   }
