@@ -15,7 +15,7 @@ class ArticlesContainer extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row justify-content-md-center">
-          <input onChange={(e) => this.props.handleTitle(e.target.value)} style={{width:'60%', fontSize:'60px', fontFamily:'Pirata One, cursive', textAlign:'center'}}></input>
+          <input id='title-input' onChange={(e) => this.props.handleTitle(e.target.value)}></input>
           <h2 style={{paddingTop:'10px'}}>Give Your Paper a Title</h2><br/>
         </div>
         <hr></hr>
@@ -24,7 +24,7 @@ class ArticlesContainer extends React.Component {
           <div className='card' style={{width:'70%', padding:'10px'}}>
             {this.props.selectedArticles[0] 
             ? this.props.selectedArticles.map(a => <p style={{textAlign:'left'}}>{a.title}<button className={'btn'} onClick={() => this.props.removeArticle(a)}>❌</button> </p>)
-            : <p >See articles organized by topics below</p>  
+            : <h4 >See articles organized by topic below</h4>  
             }
           </div>
         </div><br/>

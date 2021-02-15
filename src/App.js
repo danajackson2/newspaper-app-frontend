@@ -17,6 +17,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="App">
+        <h1 id='header'>My Daily News</h1>
         <Navbar />
         <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper}/>} /> 
         <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper}/>} />

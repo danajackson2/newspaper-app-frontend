@@ -27,3 +27,15 @@
   border-width: 3px;
   border-color: black;
 }
+
+#title-input {
+  width:60%;
+  font-size:60px;
+  font-family: 'Pirata One', cursive;
+  text-align: center;
+}
+#header {
+  font-size:80px;
+  font-family: 'Pirata One', cursive;
+  margin: 0px;
+}
