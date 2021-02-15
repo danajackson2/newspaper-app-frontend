@@ -9,7 +9,7 @@ class ArticleCard extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`http://newsapi.org/v2/everything?q=${this.props.topic}&sortBy=relevancy&sortB[…]=popularity&language=en&apiKey=2cb9ebfb65744b58ba65671c72708d72`)
+    // fetch(`http://newsapi.org/v2/everything?q=("${this.props.topic}")&sortBy=relevancy&sortB[…]=popularity&language=en&apiKey=2cb9ebfb65744b58ba65671c72708d72`)
     fetch('http://localhost:3000/articles')    
     .then(resp => resp.json())
     .then(data => this.setState({articles: data.articles.splice(0, 10)}))
