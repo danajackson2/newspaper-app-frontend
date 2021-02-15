@@ -8,6 +8,47 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+#showPageContainer {
+  height: 880px;
+  padding-right: 10px;
+}
+
+#sideBar {
+  background-color:#eee2d6; 
+  height: 100%;
+  text-align: left;
+  padding-left: 2em;
+}
+
+#paperShow {
+  height: 100%;
+  width: 100%;
+  border: solid black;
+}
+
+#paperArticleCard {
+  width: 18rem;
+  /* NEED TO FIX THIS */
+}
+
+#fullArticle {
+  height: 100%;
+  /* text-overflow: initial; */
+}
+
+.allPapers {
+  padding-top: 1em;
+  text-align: left;
+}
+
+.form-inline {
+  /* To get it centered */
+  /* width: 50%;
+  margin-left : 25% */
+
+  padding-top: 1em;
+} 
+
