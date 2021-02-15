@@ -20,12 +20,14 @@ class CreateContainer extends React.Component {
         this.setState(prevState => {
           return {
            selectedTopics: prevState.selectedTopics.filter(stateTopic => stateTopic !== topic)
+          //  .sort((a,b) => a.localeCompare(b))
           }
         })
       } else {
-        this.setState({selectedTopics: [topic, ...this.state.selectedTopics]})
+        this.setState({selectedTopics: [...this.state.selectedTopics, topic]})
+          // .sort((a,b) => a.localeCompare(b))
       }
-    }
+  }
   
     addToTopics = () => {
       if (!this.state.topics.includes(this.state.custom)){
@@ -80,7 +82,7 @@ class CreateContainer extends React.Component {
       return (
         <div className="create">
             {this.state.topicShow 
-              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow}/> 
+              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics}/> 
               : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle}/>}
         </div>
       )

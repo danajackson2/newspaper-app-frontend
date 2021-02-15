@@ -8,3 +8,22 @@
   align-self: center;
   text-align: center;
 }
+
+#topic-card {
+  height: 100px;
+  margin: 10px; 
+  background-color:#eee2d6; 
+  color:black;
+  font-size: 25px;
+  line-height: 100px;
+}
+#topic-card-sel {
+  height: 100px;
+  margin: 10px; 
+  background-color:#caaf94; 
+  color: black;
+  font-size: 25px;
+  line-height: 100px;
+  border-width: 3px;
+  border-color: black;
+}
