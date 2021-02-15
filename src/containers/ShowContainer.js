@@ -14,14 +14,18 @@ class ShowContainer extends React.Component {
     .then(json => this.setState({papers: json}))
   }
 
-    render () {
-      return (
-        <div className="show">
-            Show Container
-            <SideBar papers={this.state.papers}/>
-            <PaperContainer paper={this.props.paper}/>
-        </div>
-      );
-    }
+  searchPapers = (e) => {
+    // Set state papers to be a filtered papers based on event
+    console.log(e)
   }
-  export default ShowContainer;
+
+  render () {
+    return (
+      <div className="row" id="showPageContainer">
+          <SideBar papers={this.state.papers} setSelectedPaper={this.props.setSelectedPaper} searchPapers={this.searchPapers}/>
+          <PaperContainer paper={this.props.paper} />
+      </div>
+    );
+  }
+}
+export default ShowContainer;
