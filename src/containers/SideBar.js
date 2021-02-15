@@ -7,7 +7,6 @@ class SideBar extends React.Component {
   // }
 
   render () {
-    console.log(this.props.papers)
     return (
       <div className="sideBar">
           Side Bar

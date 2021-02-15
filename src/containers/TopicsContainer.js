@@ -9,7 +9,7 @@ class TopicsContainer extends React.Component {
       return (
         <div className="container">
             <h1 className='row justify-content-center'>Select Your Topics</h1>
-            <div className='row row-cols-6'>
+            <div className='row row-cols-6 justify-content-center'>
               {this.props.topics.map(t => <TopicCard topic={t} selectTopic={this.props.selectTopic} selectedTopics={this.props.selectedTopics}/>)}
             </div>
             <div className='row justify-content-center' style={{margin:'20px'}}>
