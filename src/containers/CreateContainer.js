@@ -20,12 +20,14 @@ class CreateContainer extends React.Component {
         this.setState(prevState => {
           return {
            selectedTopics: prevState.selectedTopics.filter(stateTopic => stateTopic !== topic)
+          //  .sort((a,b) => a.localeCompare(b))
           }
         })
       } else {
-        this.setState({selectedTopics: [topic, ...this.state.selectedTopics]})
+        this.setState({selectedTopics: [...this.state.selectedTopics, topic]})
+          // .sort((a,b) => a.localeCompare(b))
       }
-    }
+  }
   
     addToTopics = () => {
       if (!this.state.topics.includes(this.state.custom)){
@@ -50,6 +52,8 @@ class CreateContainer extends React.Component {
             paper: {...prevState.paper, articles: prevState.paper.articles.concat(article)}
           }
         })
+      } else if (this.state.paper.articles.length === 10) {
+        alert('Congratulations, you have chosen 10 articles! Scroll to the bottom of the page to create your paper.')
       }
     }
 
@@ -57,14 +61,20 @@ class CreateContainer extends React.Component {
       this.setState(prevState => ({paper: {...prevState.paper, title: text}}))
     }
 
+    removeArticle = (article) => {
+      this.setState(prevState => ({
+          paper: {...prevState.paper, articles: prevState.paper.articles.filter(a => a !== article)}
+        }))
+    }
+
     savePaper = () => {
-      console.log(this.state.paper)
       fetch(NEW_PAPER_URL,{
         method: 'POST',
         headers : {'content-type':'application/json'},
         body: JSON.stringify({paper: this.state.paper})
       })
       .then(res => res.json())
+      // .then(data => this.props.setSelectedPaper(data))
       .then(console.log)
     }
     
@@ -72,10 +82,10 @@ class CreateContainer extends React.Component {
       return (
         <div className="create">
             {this.state.topicShow 
-              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow}/> 
-              : <ArticlesContainer selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle}/>}
+              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics}/> 
+              : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle}/>}
         </div>
-      );
+      )
     }
   }
 

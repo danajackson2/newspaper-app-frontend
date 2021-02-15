@@ -1,11 +1,15 @@
+import { render } from '@testing-library/react'
 import React from 'react'
 
-function TopicCard({topic, selectTopic}) {
-      return (
-        <div className="topic-card card" onClick={() => selectTopic(topic)}>
-            {topic}
-            {/* each topic needs onClick that adds it to state in create container*/}
-        </div>
-      )
+class TopicCard extends React.Component{
+
+  render(){
+    const {topic, selectTopic, selectedTopics} = this.props 
+    return (
+      <div id={selectedTopics.includes(topic) ? 'topic-card-sel' : 'topic-card'} className="card col" onClick={() => {selectTopic(topic)}}>
+          {topic}
+      </div>
+    )
   }
+}
 export default TopicCard

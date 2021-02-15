@@ -4,13 +4,22 @@ import PaperContainer from './PaperContainer'
 
 class ShowContainer extends React.Component {
 
+  state = {
+    papers: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/papers')
+    .then(resp => resp.json())
+    .then(json => this.setState({papers: json}))
+  }
+
     render () {
       return (
         <div className="show">
-            ShowContainer
-            <SideBar />
-            <PaperContainer />
-            {/* Render today's paper that was created */}
+            Show Container
+            <SideBar {...this.props.routerProps} papers={this.state.papers}/>
+            <PaperContainer paper={this.props.paper}/>
         </div>
       );
     }
