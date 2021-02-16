@@ -50,3 +50,9 @@
   padding:1rem;
   height:50px;
 }
+
+.greeting {
+  margin:0px;
+  align-self:center;
+  text-align:left;
+}

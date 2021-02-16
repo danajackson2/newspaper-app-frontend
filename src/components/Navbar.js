@@ -7,7 +7,7 @@ class Navbar extends React.Component {
         return (
             <div className="ui secondary  menu" style={{backgroundColor: '#eee2d6', padding:'10px', marginBottom:'30px', marginTop:'0px'}}>
                 <NavLink className="item" to="/" >Home</NavLink>
-                <NavLink className="item" to="/papers" >Read Paper</NavLink>
+                <NavLink className="item" to={localStorage.token ? "/papers" : '/'}>Read Paper</NavLink>
                 <div className="right menu">
                     {this.props.user.name ? null : <NavLink className="item" to="/signup">Signup</NavLink> }
                     {this.props.user.name 

@@ -10,10 +10,13 @@ class ShowContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/papers')
+    fetch('http://localhost:3000/papers',{
+      method: "GET",
+      headers: {Authorization: `Bearer ${localStorage.token}`}
+    })
     .then(resp => resp.json())
     .then(json => this.setState({papers: json, filter: json}))
-    .catch(() => alert('Please log in.'))
+    .catch(() => alert('catch fired ShowContainer'))
   }
 
   searchUsers = (e, papers) => {

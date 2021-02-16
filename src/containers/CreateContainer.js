@@ -42,7 +42,12 @@ class CreateContainer extends React.Component {
     }
 
     articleShow = () => {
-      this.setState(prevState => ({topicShow: !prevState.topicShow}))
+      if (localStorage.token) {
+        this.setState(prevState => ({topicShow: !prevState.topicShow}))
+      } else {
+        this.setState({selectedTopics: []})
+        alert('Please log in')
+      }
     }
 
     handleArticle = (article) => {
@@ -71,7 +76,7 @@ class CreateContainer extends React.Component {
     savePaper = () => {
       fetch(NEW_PAPER_URL,{
         method: 'POST',
-        headers : {'content-type':'application/json'},
+        headers : {'content-type':'application/json', Authorization: `Bearer ${localStorage.token}`}, 
         body: JSON.stringify({paper: this.state.paper})
       })
       .then(res => res.json())
