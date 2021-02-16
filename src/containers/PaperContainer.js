@@ -35,8 +35,8 @@ class PaperContainer extends React.Component {
   renderPaper = () => {
     return (
       <div>
-        <h2 id='title-input'>{this.props.paper.title}</h2>
-        <div className="card-columns">
+        <h2 style={{fontFamily: "Pirata One, cursive", fontSize: "60px"}}>{this.props.paper.title}</h2>
+        <div className="row" >
           {this.props.paper.articles.map(article => < PaperArticleCard article={article} setArticle={this.setArticle}/>)}
         </div>
       </div>
