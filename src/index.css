@@ -29,11 +29,6 @@ code {
   border: solid black;
 }
 
-#paperArticleCard {
-  width: 18rem;
-  /* NEED TO FIX THIS */
-}
-
 #fullArticle {
   height: 100%;
   /* text-overflow: initial; */
@@ -44,7 +39,7 @@ code {
   text-align: left;
 }
 
-.form-inline {
+.ui-search {
   /* To get it centered */
   /* width: 50%;
   margin-left : 25% */

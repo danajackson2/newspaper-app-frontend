@@ -1,5 +1,6 @@
 import React from 'react'
 import SideBarPaper from '../components/SideBarPaper'
+import Search from '../components/Search'
 import { Link } from 'react-router-dom'
 
 class SideBar extends React.Component {
@@ -12,10 +13,7 @@ class SideBar extends React.Component {
     return (
       <div className="col-sm-3" id="sideBar">
           <h2>All Papers</h2>
-            <div class="form-inline">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search friends/papers..."/>
-              <i class="search icon" onClick={this.props.searchPapers}></i>
-            </div>
+          {< Search searchUsers={this.props.searchUsers} papers={this.props.papers}/>}
           <div className="allPapers">
             {this.props.papers.map(paper => < SideBarPaper paper={paper} setSelectedPaper={this.props.setSelectedPaper}/>)}
           </div>
