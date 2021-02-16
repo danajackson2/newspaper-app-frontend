@@ -13,6 +13,7 @@ class ShowContainer extends React.Component {
     fetch('http://localhost:3000/papers')
     .then(resp => resp.json())
     .then(json => this.setState({papers: json, filter: json}))
+    .catch(() => alert('Please log in.'))
   }
 
   searchUsers = (e, papers) => {
