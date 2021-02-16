@@ -91,16 +91,22 @@ class App extends React.Component {
       <div className="App">
         <div className='container'>
           <div className='row'>
-            {this.state.user.name ? <h2 className={'col-md-4'}>{`Hi, ${this.state.user.name}`}</h2> : null}
-            <h1 className={'ml-md-auto'} id='header'>My Daily News</h1>
+            <h2 className='col-3 greeting'>{this.state.user.name ? `Hi, ${this.state.user.name}` : ' '}</h2>
+            <h1 className={'col-6'} id='header'>My Daily News</h1>
           </div>
         </div>
         <Navbar user={this.state.user} logOut={this.logOut}/>
-        <Route exact path='/signup' render={() => <Signup handleLoginOrSignup={this.handleSignup}/>}/>
-        <Route exact path='/login' render={() => <Login handleLoginOrSignup={this.handleLogin}/>}/>
-        {/* {!this.state.user.id && <Redirect to="/login" />} */}
-        <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper}/>} /> 
-        <Route exact path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+        {/* <Switch> */}
+          <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper}/>} /> 
+          {!localStorage.token ?
+          <>
+            <Route exact path='/signup' render={() => <Signup handleLoginOrSignup={this.handleSignup}/>}/>
+            <Route exact path='/login' render={() => <Login handleLoginOrSignup={this.handleLogin}/>}/>
+          </>
+          :
+          <Route exact path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+          }
+        {/* </Switch> */}
         <div id={'footer'}></div>
       </div>
     )
