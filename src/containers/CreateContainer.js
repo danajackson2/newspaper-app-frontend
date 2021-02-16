@@ -34,6 +34,7 @@ class CreateContainer extends React.Component {
         this.setState({topics: [this.state.custom, ...this.state.topics]})
       }
       this.selectTopic(this.state.custom)
+      document.getElementById('customInput').value = ''
     }
     
     setCustom = (word) => {

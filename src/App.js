@@ -3,7 +3,6 @@ import Navbar from './components/Navbar'
 import React from 'react'
 import ShowContainer from './containers/ShowContainer'
 import CreateContainer from './containers/CreateContainer'
-import Footer from './components/Footer'
 import { Route } from 'react-router-dom'
 class App extends React.Component {
   state = {
@@ -21,7 +20,7 @@ class App extends React.Component {
         <Navbar />
         <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper}/>} /> 
         <Route exact path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
-        {/* <Footer /> */}
+        <div id={'footer'}></div>
       </div>
     )
   }
