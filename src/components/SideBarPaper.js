@@ -1,6 +1,7 @@
 import React from 'react'
 
 class SideBarPaper extends React.Component {
+  
   render() {
     return (
       <div className="allPapers" onClick={() => this.props.setSelectedPaper(this.props.paper)}>
