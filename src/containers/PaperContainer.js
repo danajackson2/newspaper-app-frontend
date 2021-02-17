@@ -4,33 +4,25 @@ import {Route} from 'react-router-dom'
 
 class PaperContainer extends React.Component {
 
-  state = {
-    selectedArticle: false
-  }
-
   handleLogic = () => {
-    return this.state.selectedArticle === false 
+    return this.props.selectedArticle === false 
     ? this.renderPaper() 
     : this.showArticle()
-  }
-
-  setArticle = (article) => {
-    let articleIndex = this.props.paper.articles.findIndex(art => art.id === article.id)
-    this.setState({selectedArticle: articleIndex})
   }
 
   showArticle = () => {
     return (
       <div className="card card-block" style={{}}>
         <div id="fullArticle" className="card-body align-items-center justify-content-center">
-          <h2 className="card-title">{this.props.paper.articles[this.state.selectedArticle].title}</h2>
-          <img className='card-img' style={{width: "50%", height: "50%", alignContent: "center"}} src={this.props.paper.articles[this.state.selectedArticle].img_url}/>
-          <p className='card-text' style={{overflow:'scroll', height: "500px", width: "100", alignContent: "center"}}>{this.props.paper.articles[this.state.selectedArticle].content}</p>
+          <h2 className="card-title">{this.props.paper.articles[this.props.selectedArticle].title}</h2>
+          <h4 className="card-subtitle">{this.props.paper.articles[this.props.selectedArticle].author}</h4>
+          <img className='card-img' style={{width: "50%", height: "50%", alignContent: "center"}} src={this.props.paper.articles[this.props.selectedArticle].img_url}/>
+          <p className='card-text' style={{overflow:'scroll', height: "500px", width: "100", alignContent: "center"}}>{this.props.paper.articles[this.props.selectedArticle].content}</p>
         </div>
         <div className="btn-group">
-          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.state.selectedArticle > 0 && this.setState({selectedArticle: this.state.selectedArticle - 1})}>Previous</button>
-          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.setState({selectedArticle: false})}>All Articles</button>
-          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.state.selectedArticle < this.props.paper.articles.last && this.setState({selectedArticle: this.state.selectedArticle + 1})}>Next</button>
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={this.props.handleArticle}>Previous</button>
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={this.props.handleArticle}>All Articles</button>
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={this.props.handleArticle}>Next</button>
         </div>
       </div>
     )
@@ -39,9 +31,10 @@ class PaperContainer extends React.Component {
   renderPaper = () => {
     return (
       <div>
-        <h2 style={{fontFamily: "Pirata One, cursive", fontSize: "60px"}}>{this.props.paper.title}</h2>
+        <h2 style={{fontFamily: "Pirata One, cursive", fontSize: "50px", marginBottom: "0px"}}>{this.props.paper.title}</h2>
+        <h3 style={{fontSize: "30px", margin: "0px"}}>{this.props.paper.date}</h3>
         <div className="row" >
-          {this.props.paper.articles.map(article => < PaperArticleCard article={article} setArticle={this.setArticle}/>)}
+          {this.props.paper.articles.map(article => < PaperArticleCard article={article} setArticle={this.props.setArticle}/>)}
         </div>
       </div>
     )
