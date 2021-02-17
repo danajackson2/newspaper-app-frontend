@@ -6,9 +6,9 @@ class ArticlesContainer extends React.Component {
 
   fillPaper = () =>{
     let num = this.props.selectedArticles.length
-    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=21f142801a5e4b6d937cd534c4b4a06d')
+    fetch('http://content.guardianapis.com/search?order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086')
     .then(res => res.json())
-    .then(data => {data.articles.slice(0, 10-num).forEach(a => this.props.handleArticle(a))})
+    .then(data => {data.response.results.slice(0, 10-num).forEach(a => this.props.handleArticle(a))})
   }
 
   render () {
@@ -36,7 +36,7 @@ class ArticlesContainer extends React.Component {
             <h3>Need some help choosing articles? Click below to fill out your paper with randomly generated articles.</h3>
             <button onClick={this.fillPaper} className={"btn btn-outline-secondary"}>Random Articles</button>
         <hr></hr>
-        <Link to={this.props.newPaper.title === '' || this.props.newPaper.articles === [] ? '/' : "/papers"} className={'row justify-content-md-center'}>
+        <Link to={this.props.newPaper.title === '' || this.props.newPaper.articles[0] === undefined ? '/' : "/papers"} className={'row justify-content-md-center'}>
           <button className={"btn btn-outline-secondary btn-lg"} style={{width:'25%'}} onClick={this.props.savePaper}>Create My Paper</button>
         </Link><br/>
       </div>

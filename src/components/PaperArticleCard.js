@@ -6,8 +6,10 @@ class PaperArticleCard extends React.Component {
       <div className="col-sm-3">
         <div className="card" >
             <div className="card-body" onClick={() => this.props.setArticle(this.props.article)}>
-                <h5 className="card-title">{this.props.article.title}</h5>
-                <p className="card-text">{this.props.article.content}</p>
+                <h4 className="card-title">{this.props.article.title}</h4>
+                <h5 className="card-subtitle">{this.props.article.author}</h5>
+                <img className='card-img' src={this.props.article.img_url}></img>
+                <p className="card-text" style={{overflow:'hidden'}}>{this.props.article.content}</p>
             </div>
         </div>
       </div>
