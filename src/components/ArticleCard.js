@@ -9,10 +9,11 @@ class ArticleCard extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://newsapi.org/v2/everything?q=("${this.props.topic}")&sortBy=relevancy&sortB[…]=popularity&language=en&apiKey=2cb9ebfb65744b58ba65671c72708d72`)
+    fetch(`http://content.guardianapis.com/search?q="${this.props.topic}"&order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086`)
     // fetch('http://localhost:3000/articles')    
     .then(resp => resp.json())
-    .then(data => this.setState({articles: data.articles.splice(0, 10)}))
+    // .then(data => console.log(data.response.results.splice(0, 10)))
+    .then(data => this.setState({articles: data.response.results.splice(0, 10)}))
   }
 
   changeCurrent = (direction) => {

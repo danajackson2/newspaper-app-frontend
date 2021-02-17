@@ -49,14 +49,19 @@ class CreateContainer extends React.Component {
     }
 
     handleArticle = (article) => {
+      let formattedArticle = {title: article.webTitle, img_url: article.fields.thumbnail, content: article.fields.bodyText, author: article.fields.byline}
       // this.setState({paper: {...this.state.paper, articles:[...this.state.paper.articles, article]}})
-      if (this.state.paper.articles.length < 10 && !this.state.paper.articles.includes(article)) {
-        this.setState(prevState => {
-          return {
-            paper: {...prevState.paper, articles: prevState.paper.articles.concat(article), user_id: this.props.user}
-          }
-        })
-      } else if (this.state.paper.articles.length === 10) {
+      if (this.state.paper.articles.length < 10) {
+        if (!this.state.paper.articles.map(a => a.title).includes(formattedArticle.title)) {
+          this.setState(prevState => {
+            return {
+              paper: {...prevState.paper, articles: prevState.paper.articles.concat(formattedArticle), user_id: this.props.user}
+            }
+          })
+        } else {
+          alert("You've already selected that article, keep perusing!")
+        }
+      } else{
         alert('Congratulations, you have chosen 10 articles! Scroll to the bottom of the page to create your paper.')
       }
     }
@@ -72,7 +77,7 @@ class CreateContainer extends React.Component {
     }
 
     savePaper = () => {
-      if (this.state.paper.title === '' || this.state.paper.articles === []){
+      if (this.state.paper.title === '' || this.state.paper.articles[0]===undefined){
         alert('Please give your paper a title, and choose and least one article.')
       } else {
         fetch(NEW_PAPER_URL,{
@@ -81,7 +86,8 @@ class CreateContainer extends React.Component {
           body: JSON.stringify({paper: this.state.paper})
         })
         .then(res => res.json())
-        .then(data => this.props.setSelectedPaper(data))
+        .then(console.log)
+        // .then(data => this.props.setSelectedPaper(data))
       }
     }
     
