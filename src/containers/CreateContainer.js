@@ -1,7 +1,8 @@
 import React from 'react'
 import TopicsContainer from './TopicsContainer'
 import ArticlesContainer from './ArticlesContainer'
-import {Redirect} from 'react-router-dom'
+// import {withRouter, Redirect} from 'react-router-dom'
+import { render } from '@testing-library/react'
 
 const topicsArray = ['Arts', 'Automobiles', 'Books', 'Business', 'Fashion', 'Food', 'Health', 'Home', 'Movies', 'Obituaries', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Technology', 'Theater', 'Travel', 'America', 'World']
 const NEW_PAPER_URL = 'http://localhost:3000/papers'
@@ -88,11 +89,12 @@ class CreateContainer extends React.Component {
         .then(res => res.json())
         .then(data => this.props.setSelectedPaper(data))
       }
+      // <Redirect to={`/papers/${this.props.selPaper.id}`}/>
     }
     
     render () {
       return (
-        <div className="create">
+        <div className="create" style={{padding:'10px'}}>
             {this.state.topicShow 
               ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics}/> 
               : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle} newPaper={this.state.paper}/>}
@@ -101,4 +103,5 @@ class CreateContainer extends React.Component {
     }
   }
 
-export default CreateContainer;
+  export default CreateContainer
+// export default withRouter(CreateContainer);

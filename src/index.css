@@ -12,13 +12,15 @@ code {
 }
 
 #showPageContainer {
-  padding-right: 10px;
+/*   height: 880px; */
+  padding: 10px;
+/*   padding-right: 10px; */
 }
 
 #sideBar {
   background-color:#eee2d6; 
   text-align: left;
-  padding-left: 2em;
+  padding: 10px;
 }
 
 #paperShow {
@@ -39,10 +41,6 @@ code {
 }
 
 .ui-search {
-  /* To get it centered */
-  /* width: 50%;
-  margin-left : 25% */
-
   padding-top: 1em;
 } 
 
@@ -60,3 +58,4 @@ code {
 #paperContainer {
   padding-bottom: 60px;
 }
+

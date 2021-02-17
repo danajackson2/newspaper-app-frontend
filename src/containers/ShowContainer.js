@@ -60,6 +60,7 @@ class ShowContainer extends React.Component {
 
   render () {
     return (
+//       <div className="row" id="showPageContainer" style={{marginBottom:'100px'}}>
       <div className="container-fluid" id="showPageContainer">
         <div className="row">
             <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers} resetArticle={this.resetArticle}/>

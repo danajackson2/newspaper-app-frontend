@@ -11,7 +11,7 @@ class SideBarPaper extends React.Component {
         this.props.resetArticle()}
       }>
         <Link key={id} to={`/papers/${id}`}>
-          <li>{`${date} ${user.username}`}</li>
+          <li style={{color: 'black'}}>{`${date} ${user.username}`}</li>
         </Link>
       </div>
     )
