@@ -92,7 +92,7 @@ class App extends React.Component {
         <div className='container'>
           <div className='row'>
             <h2 className='col-3 greeting'>{this.state.user.name ? `Hi, ${this.state.user.name}!` : ' '}</h2>
-            <h1 className={'col-6'} id='header'>My Daily News</h1>
+            <h1 className={'col-6'} id='header'>News Choose</h1>
           </div>
         </div>
         <Navbar user={this.state.user} logOut={this.logOut}/>

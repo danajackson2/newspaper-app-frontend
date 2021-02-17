@@ -12,6 +12,7 @@ class ArticlesContainer extends React.Component {
   }
 
   render () {
+    console.log(this.props.selPaper)
     return (
       <div className="container-fluid">
         <div className="row justify-content-md-center">
@@ -36,7 +37,7 @@ class ArticlesContainer extends React.Component {
             <h3>Need some help choosing articles? Click below to fill out your paper with randomly generated articles.</h3>
             <button onClick={this.fillPaper} className={"btn btn-outline-secondary"}>Random Articles</button>
         <hr></hr>
-        <Link to={this.props.newPaper.title === '' || this.props.newPaper.articles[0] === undefined ? '/' : "/papers"} className={'row justify-content-md-center'}>
+        <Link to={this.props.newPaper.title === '' || this.props.newPaper.articles[0] === undefined ? '/' : '/papers'} className={'row justify-content-md-center'}>
           <button className={"btn btn-outline-secondary btn-lg"} style={{width:'25%'}} onClick={this.props.savePaper}>Create My Paper</button>
         </Link><br/>
       </div>

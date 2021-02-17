@@ -48,7 +48,8 @@ class PaperContainer extends React.Component {
         <Route path={`${this.props.routerProps.match.url}/${this.props.paper.id}`} render={this.handleLogic}/>
         </div>
       </div>
-    );
+    )
   }
 }
+
 export default PaperContainer;

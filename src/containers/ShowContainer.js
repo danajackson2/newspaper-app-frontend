@@ -64,7 +64,7 @@ class ShowContainer extends React.Component {
       <div className="container-fluid" id="showPageContainer">
         <div className="row">
             <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers} resetArticle={this.resetArticle}/>
-            <PaperContainer paper={this.props.paper} routerProps={this.props.routerProps} selectedArticle={this.state.selectedArticle} setArticle={this.setArticle} handleArticle={this.handleArticle}/>
+            <PaperContainer paper={this.props.paper} routerProps={this.props.routerProps} selectedArticle={this.state.selectedArticle} setArticle={this.setArticle} handleArticle={this.handleArticle} />
         </div>
       </div>
     );
