@@ -34,7 +34,7 @@ class ShowContainer extends React.Component {
     return (
       <div className="row" id="showPageContainer">
           <SideBar {...this.props.routerProps} papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers}/>
-          <PaperContainer paper={this.props.paper} />
+          <PaperContainer paper={this.props.paper} appSelectedArticle={this.props.appSelectedArticle}/>
       </div>
     );
   }
