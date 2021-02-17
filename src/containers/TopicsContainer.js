@@ -1,8 +1,6 @@
 import React from 'react'
 import TopicCard from '../components/TopicCard'
 
-
-
 class TopicsContainer extends React.Component {
 
     render () {
@@ -13,7 +11,7 @@ class TopicsContainer extends React.Component {
               {this.props.topics.map(t => <TopicCard topic={t} selectTopic={this.props.selectTopic} selectedTopics={this.props.selectedTopics}/>)}
             </div>
             <div className='row justify-content-center' style={{margin:'20px'}}>
-                <input id={'customInput'} style={{width:'30%'}} className='col-4' placeholder='Custom Topic' onChange={(e) => this.props.setCustom(e.target.value)}></input>
+                <input id='customInput' className='col-4' placeholder='Custom Topic' onChange={(e) => this.props.setCustom(e.target.value)}></input>
                 <button className='btn-outline-secondary btn col-2' onClick={this.props.addToTopics}>Submit</button>
             </div>
             <div className='row justify-content-center' style={{margin:'20px'}}>

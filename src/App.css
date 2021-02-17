@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  margin: 20px;
+  margin: 10px;
+  min-height: 91vh;
 }
 
 .c-m {
@@ -38,17 +39,6 @@
   font-size:80px;
   font-family: 'Pirata One', cursive;
   margin: 0px;
-}
-
-#footer {
-  left:0; 
-  bottom:0; 
-  width: 100%; 
-  background-color:#eee2d6;
-  text-align:center;
-  margin-top:1rem; 
-  padding:1rem;
-  height:50px;
 }
 
 .greeting {

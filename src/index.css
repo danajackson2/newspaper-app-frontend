@@ -47,3 +47,13 @@ code {
   padding-top: 1em;
 } 
 
+#footer {
+  position:relative;
+  bottom:0; 
+  width: 100%; 
+  background-color:#eee2d6;
+  text-align:center;
+  margin-top:1rem; 
+  padding:1rem;
+  height:50px;
+}
