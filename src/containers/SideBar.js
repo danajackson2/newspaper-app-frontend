@@ -1,7 +1,6 @@
 import React from 'react'
 import SideBarPaper from '../components/SideBarPaper'
 import Search from '../components/Search'
-import { Link } from 'react-router-dom'
 
 class SideBar extends React.Component {
 

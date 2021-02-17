@@ -1,6 +1,7 @@
 import React from 'react'
 import TopicsContainer from './TopicsContainer'
 import ArticlesContainer from './ArticlesContainer'
+import {Redirect} from 'react-router-dom'
 
 const topicsArray = ['Arts', 'Automobiles', 'Books', 'Business', 'Fashion', 'Food', 'Health', 'Home', 'Movies', 'Obituaries', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Technology', 'Theater', 'Travel', 'America', 'World']
 const NEW_PAPER_URL = 'http://localhost:3000/papers'
@@ -20,18 +21,16 @@ class CreateContainer extends React.Component {
         this.setState(prevState => {
           return {
            selectedTopics: prevState.selectedTopics.filter(stateTopic => stateTopic !== topic)
-          //  .sort((a,b) => a.localeCompare(b))
           }
         })
       } else {
         this.setState({selectedTopics: [...this.state.selectedTopics, topic]})
-          // .sort((a,b) => a.localeCompare(b))
       }
   }
   
     addToTopics = () => {
       if (!this.state.topics.includes(this.state.custom)){
-        this.setState({topics: [this.state.custom, ...this.state.topics]})
+        this.setState({topics: [this.state.custom, ...this.state.topics].sort((a,b) => a.localeCompare(b))})
       }
       this.selectTopic(this.state.custom)
       document.getElementById('customInput').value = ''
@@ -74,13 +73,17 @@ class CreateContainer extends React.Component {
     }
 
     savePaper = () => {
-      fetch(NEW_PAPER_URL,{
-        method: 'POST',
-        headers : {'content-type':'application/json', Authorization: `Bearer ${localStorage.token}`}, 
-        body: JSON.stringify({paper: this.state.paper})
-      })
-      .then(res => res.json())
-      .then(data => this.props.setSelectedPaper(data))
+      if (this.state.paper.title === '' || this.state.paper.articles === []){
+        alert('Please give your paper a title, and choose and least one article.')
+      } else {
+        fetch(NEW_PAPER_URL,{
+          method: 'POST',
+          headers : {'content-type':'application/json', Authorization: `Bearer ${localStorage.token}`}, 
+          body: JSON.stringify({paper: this.state.paper})
+        })
+        .then(res => res.json())
+        .then(data => this.props.setSelectedPaper(data))
+      }
     }
     
     render () {
@@ -88,7 +91,7 @@ class CreateContainer extends React.Component {
         <div className="create">
             {this.state.topicShow 
               ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics}/> 
-              : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle}/>}
+              : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle} newPaper={this.state.paper}/>}
         </div>
       )
     }

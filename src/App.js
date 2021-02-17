@@ -107,7 +107,6 @@ class App extends React.Component {
           <Route exact path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
           }
         {/* </Switch> */}
-        <div id={'footer'}></div>
       </div>
     )
   }

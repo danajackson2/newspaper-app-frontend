@@ -1,6 +1,6 @@
 import React from 'react'
 import ArticleCard from '../components/ArticleCard'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class ArticlesContainer extends React.Component {
 
@@ -36,11 +36,11 @@ class ArticlesContainer extends React.Component {
             <h3>Need some help choosing articles? Click below to fill out your paper with randomly generated articles.</h3>
             <button onClick={this.fillPaper} className={"btn btn-outline-secondary"}>Random Articles</button>
         <hr></hr>
-        <Link to="/papers" className={'row justify-content-md-center'}>
+        <Link to={this.props.newPaper.title === '' || this.props.newPaper.articles === [] ? '/' : "/papers"} className={'row justify-content-md-center'}>
           <button className={"btn btn-outline-secondary btn-lg"} style={{width:'25%'}} onClick={this.props.savePaper}>Create My Paper</button>
         </Link><br/>
       </div>
-    );
+    )
   }
 }
 
