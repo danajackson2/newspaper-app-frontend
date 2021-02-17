@@ -6,7 +6,8 @@ class ShowContainer extends React.Component {
 
   state = {
     papers: [],
-    filter: []
+    filter: [],
+    selectedArticle: false
   }
 
   componentDidMount() {
@@ -20,21 +21,51 @@ class ShowContainer extends React.Component {
   }
 
   searchUsers = (e, papers) => {
-    let target = e.target.value
+    let target = e.target.value.toLowerCase()
     let length = e.target.value.length
     if (length < 1) {
       this.setState({filter: this.state.papers})
     } else {
-      let searchResults = papers.filter(paper => paper.user.username.substring(0, length) === target)
+      let searchResults = papers.filter(paper => paper.user.username.toLowerCase().substring(0, length) === target)
       this.setState({filter: searchResults})
     }
   }
 
+  setArticle = (article) => {
+    let articleIndex = this.props.paper.articles.findIndex(art => art.id === article.id)
+    this.setState({selectedArticle: articleIndex})
+  }
+
+  handleArticle = (e) => {
+    if (e.target.innerText === "All Articles") {
+      this.setState({selectedArticle: false})
+    } else if (e.target.innerText === "Previous") {
+      this.state.selectedArticle > 0 && this.setState({selectedArticle: this.state.selectedArticle - 1})
+    } else if (e.target.innerText === "Next") {
+      this.state.selectedArticle < this.props.paper.articles.length-1 && this.setState({selectedArticle: this.state.selectedArticle + 1})
+    }
+    // switch (e.target.innerText) {
+    //   case "All Articles":
+    //     this.setState({selectedArticle: false})
+    //   case "Previous":
+    //     this.state.selectedArticle > 0 && this.setState({selectedArticle: this.state.selectedArticle - 1})
+    //   case "Next":
+    //     this.state.selectedArticle < this.props.paper.articles.length-1 && this.setState({selectedArticle: this.state.selectedArticle + 1})
+    // }
+  }
+
+  resetArticle = () => {
+    this.setState({selectedArticle: false})
+  }
+
   render () {
     return (
-      <div className="row" id="showPageContainer" style={{marginBottom:'100px'}}>
-          <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers}/>
-          <PaperContainer paper={this.props.paper} routerProps={this.props.routerProps}/>
+//       <div className="row" id="showPageContainer" style={{marginBottom:'100px'}}>
+      <div className="container-fluid" id="showPageContainer">
+        <div className="row">
+            <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers} resetArticle={this.resetArticle}/>
+            <PaperContainer paper={this.props.paper} routerProps={this.props.routerProps} selectedArticle={this.state.selectedArticle} setArticle={this.setArticle} handleArticle={this.handleArticle}/>
+        </div>
       </div>
     );
   }

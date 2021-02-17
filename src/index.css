@@ -12,13 +12,13 @@ code {
 }
 
 #showPageContainer {
-  height: 880px;
+/*   height: 880px; */
   padding: 10px;
+/*   padding-right: 10px; */
 }
 
 #sideBar {
   background-color:#eee2d6; 
-  height: 100%;
   text-align: left;
   padding: 10px;
 }
@@ -29,19 +29,33 @@ code {
   border: solid black;
 }
 
-#fullArticle {
-  /* height: 100%; */
-  /* text-overflow: initial; */
-}
-
 .allPapers {
   padding-top: 1em;
   text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.allPapers a {
+  color: black;
 }
 
 .ui-search {
-  /* To get it centered */
-  /* width: 50%;
-  margin-left : 25% */
   padding-top: 1em;
 } 
+
+#footer {
+  position:fixed;
+  bottom:0; 
+  width: 100%; 
+  background-color:#eee2d6;
+  text-align:center;
+  margin-top:1rem; 
+  padding:1rem;
+  height:50px;
+}
+
+#paperContainer {
+  padding-bottom: 60px;
+}
+
