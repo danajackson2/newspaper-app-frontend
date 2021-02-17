@@ -10,7 +10,7 @@ class SideBar extends React.Component {
           <h2 style={{textAlign: "center"}}>All Papers</h2>
           {< Search searchUsers={this.props.searchUsers} papers={this.props.papers}/>}
           <div className="allPapers">
-            {this.props.papers.map(paper => < SideBarPaper paper={paper} setSelectedPaper={this.props.setSelectedPaper}/>)}
+            {this.props.papers.map(paper => < SideBarPaper paper={paper} setSelectedPaper={this.props.setSelectedPaper} resetArticle={this.props.resetArticle}/>)}
           </div>
       </div>
     )
