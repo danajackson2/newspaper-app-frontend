@@ -7,12 +7,11 @@ const NEW_PAPER_URL = 'http://localhost:3000/papers'
 class CreateContainer extends React.Component {
 
     state={
-        topicShow: true,
-        topics: topicsArray,
-        selectedTopics: [],
-        custom: "",
-        paper: {title: '', date: '', articles: []
-      }
+      topicShow: true,
+      topics: topicsArray,
+      selectedTopics: [],
+      custom: "",
+      paper: {title: '', date: '', articles: [], user_id: ''}
     }
 
     selectTopic = (topic) => {
@@ -55,7 +54,7 @@ class CreateContainer extends React.Component {
       if (this.state.paper.articles.length < 10 && !this.state.paper.articles.includes(article)) {
         this.setState(prevState => {
           return {
-            paper: {...prevState.paper, articles: prevState.paper.articles.concat(article)}
+            paper: {...prevState.paper, articles: prevState.paper.articles.concat(article), user_id: this.props.user}
           }
         })
       } else if (this.state.paper.articles.length === 10) {
