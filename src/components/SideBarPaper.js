@@ -8,7 +8,7 @@ class SideBarPaper extends React.Component {
     return (
       <div className="allPapers" onClick={() => this.props.setSelectedPaper(this.props.paper)}>
         <Link key={id} to={`/papers/${id}`}>
-          <li>{`${date} ${user.username}`}</li>
+          <li style={{color: 'black'}}>{`${date} ${user.username}`}</li>
         </Link>
       </div>
     )

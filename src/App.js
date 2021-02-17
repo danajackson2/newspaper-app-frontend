@@ -97,7 +97,7 @@ class App extends React.Component {
           </div>
         </div>
         <Navbar user={this.state.user} logOut={this.logOut}/>
-          <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper} user={this.state.user.id}/>} /> 
+          <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper} user={this.state.user.id} selPaper={this.state.selectedPaper}/>}/> 
           {!localStorage.token ?
           <>
             <Route exact path='/signup' render={() => <Signup handleLoginOrSignup={this.handleSignup}/>}/>

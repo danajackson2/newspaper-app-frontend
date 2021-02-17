@@ -31,9 +31,8 @@ class ShowContainer extends React.Component {
   }
 
   render () {
-    console.log(this.props.routerProps.match.url, this.props.paper.id)
     return (
-      <div className="row" id="showPageContainer">
+      <div className="row" id="showPageContainer" style={{marginBottom:'100px'}}>
           <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers}/>
           <PaperContainer paper={this.props.paper} routerProps={this.props.routerProps}/>
       </div>

@@ -21,7 +21,7 @@ class PaperContainer extends React.Component {
 
   showArticle = () => {
     return (
-      <div className="card card-block" style={{}}>
+      <div className="card card-block" >
         <div id="fullArticle" className="card-body align-items-center justify-content-center">
           <h2 className="card-title">{this.props.paper.articles[this.state.selectedArticle].title}</h2>
           <img className='card-img' style={{width: "50%", height: "50%", alignContent: "center"}} src={this.props.paper.articles[this.state.selectedArticle].img_url}/>
@@ -40,6 +40,7 @@ class PaperContainer extends React.Component {
     return (
       <div>
         <h2 style={{fontFamily: "Pirata One, cursive", fontSize: "60px"}}>{this.props.paper.title}</h2>
+        <h2>{this.props.paper.date}</h2>
         <div className="row" >
           {this.props.paper.articles.map(article => < PaperArticleCard article={article} setArticle={this.setArticle}/>)}
         </div>
@@ -50,8 +51,8 @@ class PaperContainer extends React.Component {
   render () {
     return (
       <div className="col-sm-9" id="paperContainer">
-        <div className="col-sm-12" id="paperShow">
-        {!this.props.paper.title && <h2>Choose a paper!</h2>}
+        <div className="col-sm-12" id="paperShow" style={{padding:'10px'}}>
+        {!this.props.paper.title && <h2>Choose a paper to read</h2>}
         <Route path={`${this.props.routerProps.match.url}/${this.props.paper.id}`} render={this.handleLogic}/>
         </div>
       </div>
