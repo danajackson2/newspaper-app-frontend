@@ -31,7 +31,7 @@ class ArticleCard extends React.Component {
     return (
       <div className="col card" style={{margin: '5px', padding: '5px', height: '370px', width:'400px'}}>
         <h3 style={{padding:'5px', margin:'0px'}}>{this.props.topic}</h3>
-        {this.state.articles[0] && <ViewArticleChoice changeCurrent={this.changeCurrent} currentView={this.state.currentView} articles={this.state.articles}/>}
+        {this.state.articles[0] ? <ViewArticleChoice changeCurrent={this.changeCurrent} currentView={this.state.currentView} articles={this.state.articles}/> : <h4>No articles are available for this topic!</h4>}
         <button style={{position: 'absolute', bottom: '5px', margin:'5px', left:'25%', width:'50%'}} className="btn btn-outline-secondary" onClick={() => this.props.handleArticle(this.state.articles[this.state.currentView])}>Add Article To Paper</button> 
       </div>
     )

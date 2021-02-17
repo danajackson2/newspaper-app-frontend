@@ -44,4 +44,4 @@ class ArticlesContainer extends React.Component {
   }
 }
 
-  export default ArticlesContainer;
+export default ArticlesContainer
