@@ -1,11 +1,15 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class SideBarPaper extends React.Component {
-  
+
   render() {
+    const {id, date, user} = this.props.paper
     return (
       <div className="allPapers" onClick={() => this.props.setSelectedPaper(this.props.paper)}>
-        <li>{`${this.props.paper.date} ${this.props.paper.user.username}`}</li>
+        <Link key={id} to={`/papers/${id}`}>
+          <li>{`${date} ${user.username}`}</li>
+        </Link>
       </div>
     )
   }
