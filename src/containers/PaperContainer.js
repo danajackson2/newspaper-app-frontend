@@ -15,16 +15,23 @@ class PaperContainer extends React.Component {
   }
 
   setArticle = (article) => {
-    this.setState({selectedArticle: article})
+    let articleIndex = this.props.paper.articles.findIndex(art => art.id === article.id)
+    this.setState({selectedArticle: articleIndex})
   }
 
   showArticle = () => {
     return (
-      <div>
-        <div id="fullArticle">
-          {this.state.selectedArticle.content}
+      <div className="card card-block" style={{}}>
+        <div id="fullArticle" className="card-body align-items-center justify-content-center">
+          <h2 className="card-title">{this.props.paper.articles[this.state.selectedArticle].title}</h2>
+          <img className='card-img' style={{width: "50%", height: "50%", alignContent: "center"}} src={this.props.paper.articles[this.state.selectedArticle].img_url}/>
+          <p className='card-text' style={{overflow:'scroll', height: "500px", width: "100", alignContent: "center"}}>{this.props.paper.articles[this.state.selectedArticle].content}</p>
         </div>
-        <button onClick={() => this.setState({selectedArticle: false})}>All Articles</button>
+        <div className="btn-group">
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.state.selectedArticle > 0 && this.setState({selectedArticle: this.state.selectedArticle - 1})}>Previous</button>
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.setState({selectedArticle: false})}>All Articles</button>
+          <button className="col-1 btn-outline-secondary btn btn-sm" onClick={() => this.state.selectedArticle < this.props.paper.articles.last && this.setState({selectedArticle: this.state.selectedArticle + 1})}>Next</button>
+        </div>
       </div>
     )
   }

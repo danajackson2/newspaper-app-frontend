@@ -10,7 +10,8 @@ class App extends React.Component {
   state = {
     selectedPaper: {},
     user: {},
-    error: ''
+    error: '',
+    selectedArticle: false
   }
 
   componentDidMount() {
@@ -103,7 +104,7 @@ class App extends React.Component {
             <Route exact path='/login' render={() => <Login handleLoginOrSignup={this.handleLogin}/>}/>
           </>
           :
-          <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+          <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper} appSelectedArticle={this.state.selectedArticle}/>} />
           }
       </div>
     )
