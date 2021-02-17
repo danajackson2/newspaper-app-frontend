@@ -97,7 +97,6 @@ class App extends React.Component {
           </div>
         </div>
         <Navbar user={this.state.user} logOut={this.logOut}/>
-        {/* <Switch> */}
           <Route exact path="/" render={() => <CreateContainer setSelectedPaper={this.setSelectedPaper} user={this.state.user.id}/>} /> 
           {!localStorage.token ?
           <>
@@ -105,9 +104,8 @@ class App extends React.Component {
             <Route exact path='/login' render={() => <Login handleLoginOrSignup={this.handleLogin}/>}/>
           </>
           :
-          <Route exact path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper} appSelectedArticle={this.state.selectedArticle}/>} />
+          <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper} appSelectedArticle={this.state.selectedArticle}/>} />
           }
-        {/* </Switch> */}
       </div>
     )
   }

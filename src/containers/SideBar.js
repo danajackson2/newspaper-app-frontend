@@ -4,10 +4,6 @@ import Search from '../components/Search'
 
 class SideBar extends React.Component {
 
-    // renderPapers = (papers) => {
-    //   Object.keys(papers).map(paperId => <Link key={paperId} to={`/papers/${paperId}`}><li>{papers[paperId].title}</li></Link>)
-    // }
-
   render () {
     return (
       <div className="col-sm-3" id="sideBar">
