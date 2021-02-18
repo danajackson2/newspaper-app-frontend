@@ -14,7 +14,7 @@ class ArticlesContainer extends React.Component {
   render () {
     console.log(this.props.selPaper)
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" style={{paddingBottom: "40px"}}>
         <div className="row justify-content-md-center">
           <input id='title-input' onChange={(e) => this.props.handleTitle(e.target.value)}></input>
           <h2 style={{paddingTop:'10px'}}>Give Your Paper a Title</h2><br/>
