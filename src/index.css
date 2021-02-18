@@ -12,9 +12,7 @@ code {
 }
 
 #showPageContainer {
-/*   height: 880px; */
   padding: 10px;
-/*   padding-right: 10px; */
 }
 
 #sideBar {
@@ -29,15 +27,11 @@ code {
   border: solid black;
 }
 
-.allPapers {
-  padding-top: 1em;
-  text-align: left;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.allPapers a {
-  color: black;
+.allPapers { 
+  text-align: left; 
+  font-weight: bold; 
+  font-size: 16px; 
+  padding-top: 20px;
 }
 
 .ui-search {
@@ -59,3 +53,16 @@ code {
   padding-bottom: 60px;
 }
 
+.sidebarUsers {
+  padding-left: 30px;
+}
+
+.links {
+  padding-left: 50px;
+  font-size: 14px; 
+  color: black;
+}
+
+.create {
+  padding-bottom: 100px;
+}

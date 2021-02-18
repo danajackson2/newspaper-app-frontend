@@ -9,6 +9,7 @@ import 'semantic-ui-css/semantic.min.css'
 ReactDOM.render(
   <Router>
     <App />
+    <div id="footer"></div>
   </Router>,
   document.getElementById('root')
 )
