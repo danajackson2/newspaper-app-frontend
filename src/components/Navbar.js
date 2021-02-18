@@ -9,7 +9,10 @@ class Navbar extends React.Component {
                 <NavLink className="item" to="/" >Home</NavLink>
                 <NavLink className="item" to={localStorage.token ? "/papers" : '/'}>Read Paper</NavLink>
                 <div className="right menu">
-                    {this.props.user.name ? null : <NavLink className="item" to="/signup">Signup</NavLink> }
+                    {this.props.user.name 
+                    ? <NavLink className="item" to="/profile">Profile</NavLink>
+                    : <NavLink className="item" to="/signup">Signup</NavLink> }
+
                     {this.props.user.name 
                     ? <NavLink className="item" to='/' onClick={this.props.logOut}>Logout</NavLink> 
                     : <NavLink className="item"to="/login">Login</NavLink>}

@@ -5,7 +5,9 @@ import ShowContainer from './containers/ShowContainer'
 import CreateContainer from './containers/CreateContainer'
 import Signup from './components/Signup'
 import Login from './components/Login'
+import Profile from './components/Profile'
 import { Route, withRouter } from 'react-router-dom'
+
 class App extends React.Component {
   state = {
     selectedPaper: {},
@@ -86,6 +88,27 @@ class App extends React.Component {
     this.setState({user:{}})
   }
 
+  updateUser = (e, user) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            'name': e.target.name.value
+        })
+    })
+    .then(resp => resp.json())
+    .then(json => this.setState({user: json}))  
+  }
+
+  deleteUser = (user) => {
+    fetch(`http://localhost:3000/users/${user.id}`, {
+        method: 'DELETE'
+    })
+    .then(this.logOut())
+    .then(this.props.history.push('/login'))
+}
+
   render () {
     return (
       <div className="App">
@@ -103,7 +126,10 @@ class App extends React.Component {
             <Route exact path='/login' render={() => <Login handleLoginOrSignup={this.handleLogin}/>}/>
           </>
           :
-          <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+          <>
+            <Route exact path='/profile' render={() => <Profile user={this.state.user} updateUser={this.updateUser} deleteUser={this.deleteUser}/>}/>
+            <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+          </>
           }
       </div>
     )
