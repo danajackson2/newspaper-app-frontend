@@ -92,7 +92,10 @@ class App extends React.Component {
     e.preventDefault()
     fetch(`http://localhost:3000/users/${user.id}`, {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json', 
+          Authorization: `Bearer ${localStorage.token}`
+        },
         body: JSON.stringify({
             'name': e.target.name.value
         })
@@ -103,7 +106,10 @@ class App extends React.Component {
 
   deleteUser = (user) => {
     fetch(`http://localhost:3000/users/${user.id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
     })
     .then(this.logOut())
     .then(this.props.history.push('/login'))
