@@ -1,8 +1,7 @@
 import React from 'react'
 import TopicsContainer from './TopicsContainer'
 import ArticlesContainer from './ArticlesContainer'
-// import {withRouter, Redirect} from 'react-router-dom'
-import { render } from '@testing-library/react'
+import {withRouter} from 'react-router-dom'
 
 const topicsArray = ['Arts', 'Automobiles', 'Books', 'Business', 'Fashion', 'Food', 'Health', 'Home', 'Movies', 'Obituaries', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Technology', 'Theater', 'Travel', 'America', 'World']
 const NEW_PAPER_URL = 'http://localhost:3000/papers'
@@ -26,13 +25,13 @@ class CreateContainer extends React.Component {
       } else {
         this.setState({selectedTopics: [...this.state.selectedTopics, topic]})
       }
-  }
+    }
   
     addToTopics = () => {
       if (!this.state.topics.includes(this.state.custom)){
         this.setState({topics: [this.state.custom, ...this.state.topics].sort((a,b) => a.localeCompare(b))})
+        this.selectTopic(this.state.custom)
       }
-      this.selectTopic(this.state.custom)
       document.getElementById('customInput').value = ''
     }
     
@@ -87,21 +86,23 @@ class CreateContainer extends React.Component {
           body: JSON.stringify({paper: this.state.paper})
         })
         .then(res => res.json())
-        .then(data => this.props.setSelectedPaper(data))
+        .then(data => {
+          this.props.setSelectedPaper(data)
+          this.props.history.push(`/papers/${data.id}`)
+        })
       }
-      // <Redirect to={`/papers/${this.props.selPaper.id}`}/>
     }
     
     render () {
       return (
         <div className="create" style={{padding:'10px'}}>
             {this.state.topicShow 
-              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics}/> 
+              ? <TopicsContainer addToTopics={this.addToTopics} selectTopic={this.selectTopic} setCustom={this.setCustom} topics={this.state.topics} articleShow={this.articleShow} selectedTopics={this.state.selectedTopics} custom={this.state.custom}/> 
               : <ArticlesContainer selectedArticles={this.state.paper.articles} selectedTopics={this.state.selectedTopics} handleArticle={this.handleArticle} savePaper={this.savePaper} handleTitle={this.handleTitle} removeArticle={this.removeArticle} newPaper={this.state.paper}/>}
         </div>
       )
     }
   }
 
-  export default CreateContainer
-// export default withRouter(CreateContainer);
+  // export default CreateContainer
+export default withRouter(CreateContainer);
