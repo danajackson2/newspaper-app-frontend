@@ -121,7 +121,7 @@ class App extends React.Component {
         <div className='container'>
           <div className='row'>
             <h2 className='col-3 greeting'>{this.state.user.name ? `Hi, ${this.state.user.name}!` : ' '}</h2>
-            <h1 className={'col-6'} id='header'>My Daily News</h1>
+            <h1 className={'col-6'} id='header'>News Choose</h1>
           </div>
         </div>
         <Navbar user={this.state.user} logOut={this.logOut}/>
@@ -134,7 +134,8 @@ class App extends React.Component {
           :
           <>
             <Route exact path='/profile' render={() => <Profile user={this.state.user} updateUser={this.updateUser} deleteUser={this.deleteUser}/>}/>
-            <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+            <Route path={`/papers`} render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+            {/* <Route exact path={`papers/${routerProps.match.url}`} render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>}/> */}
           </>
           }
       </div>
