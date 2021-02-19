@@ -7,7 +7,6 @@ class ShowContainer extends React.Component {
   state = {
     papers: [],
     filter: [],
-    searchInput: "",
     selectedArticle: false
   }
 
