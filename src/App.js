@@ -134,7 +134,8 @@ class App extends React.Component {
           :
           <>
             <Route exact path='/profile' render={() => <Profile user={this.state.user} updateUser={this.updateUser} deleteUser={this.deleteUser}/>}/>
-            <Route path="/papers" render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+            <Route path={`/papers`} render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>} />
+            {/* <Route exact path={`papers/${routerProps.match.url}`} render={(routerProps) => <ShowContainer routerProps={routerProps} paper={this.state.selectedPaper} setSelectedPaper={this.setSelectedPaper}/>}/> */}
           </>
           }
       </div>

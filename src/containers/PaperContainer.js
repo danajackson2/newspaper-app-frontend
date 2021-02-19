@@ -1,6 +1,5 @@
 import React from 'react'
 import PaperArticleCard from '../components/PaperArticleCard'
-import {Route} from 'react-router-dom'
 
 class PaperContainer extends React.Component {
 
@@ -44,8 +43,7 @@ class PaperContainer extends React.Component {
     return (
       <div className="col-sm-9" id="paperContainer">
         <div className="col-sm-12" id="paperShow" style={{padding:'10px'}}>
-        {!this.props.paper.title && <h2>Choose a paper to read</h2>}
-        <Route path={`${this.props.routerProps.match.url}/${this.props.paper.id}`} render={this.handleLogic}/>
+        {!this.props.paper.title ? <h2>Choose a paper to read</h2> : this.handleLogic()}
         </div>
       </div>
     )
