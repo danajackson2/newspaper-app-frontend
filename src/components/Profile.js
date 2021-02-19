@@ -4,7 +4,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-        <div className='container'>
+        <div className='container' style={{paddingBottom: "40px"}}>
             <h1 className='row justify-content-center'>Profile</h1>
             <div>
                 <h3>Name: {this.props.user.name}</h3>

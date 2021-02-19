@@ -6,7 +6,7 @@ class TopicCard extends React.Component{
     const {topic, selectTopic, selectedTopics} = this.props 
     return (
       <div id={selectedTopics.includes(topic) ? 'topic-card-sel' : 'topic-card'} className="card col" onClick={() => {selectTopic(topic)}}>
-          {topic}
+          <h3 style={{lineHeight: "100px"}}>{topic}</h3>
       </div>
     )
   }
