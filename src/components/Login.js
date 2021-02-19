@@ -15,7 +15,7 @@ class Login extends React.Component {
 
   render() {
     return (
-        <div className='container'>
+        <div className='container' style={{paddingBottom: "40px"}}>
             <h1 className='row justify-content-center'>Log in</h1>
             <form onSubmit={(e) => this.props.handleLoginOrSignup(e, this.state)}>
                 <div className="row justify-content-center">
