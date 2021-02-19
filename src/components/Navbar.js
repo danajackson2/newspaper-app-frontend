@@ -16,8 +16,6 @@ class Navbar extends React.Component {
                     {this.props.user.name 
                     ? <NavLink className="item" to='/' onClick={this.props.logOut}>Logout</NavLink> 
                     : <NavLink className="item"to="/login">Login</NavLink>}
-                    
-                    {/* <NavLink className="item"to="/login">{this.props.user.name ? 'Logout': 'Login'}</NavLink> */}
                 </div>
             </div>
         )

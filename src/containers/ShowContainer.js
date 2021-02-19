@@ -39,14 +39,6 @@ class ShowContainer extends React.Component {
     } else if (e.target.innerText === "Next") {
       this.state.selectedArticle < this.props.paper.articles.length-1 && this.setState({selectedArticle: this.state.selectedArticle + 1})
     }
-    // switch (e.target.innerText) {
-    //   case "All Articles":
-    //     this.setState({selectedArticle: false})
-    //   case "Previous":
-    //     this.state.selectedArticle > 0 && this.setState({selectedArticle: this.state.selectedArticle - 1})
-    //   case "Next":
-    //     this.state.selectedArticle < this.props.paper.articles.length-1 && this.setState({selectedArticle: this.state.selectedArticle + 1})
-    // }
   }
 
   resetArticle = () => {

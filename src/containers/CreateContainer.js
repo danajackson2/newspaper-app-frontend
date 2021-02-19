@@ -50,7 +50,6 @@ class CreateContainer extends React.Component {
 
     handleArticle = (article) => {
       let formattedArticle = {title: article.webTitle, img_url: article.fields.thumbnail, content: article.fields.bodyText, author: article.fields.byline}
-      // this.setState({paper: {...this.state.paper, articles:[...this.state.paper.articles, article]}})
       if (this.state.paper.articles.length < 10) {
         if (!this.state.paper.articles.map(a => a.title).includes(formattedArticle.title)) {
           this.setState(prevState => {

@@ -21,6 +21,4 @@ class TopicsContainer extends React.Component {
       )
     }
   }
-export default TopicsContainer;
-
-// this.props.custom !== ''
+export default TopicsContainer

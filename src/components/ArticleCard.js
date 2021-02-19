@@ -9,10 +9,8 @@ class ArticleCard extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://content.guardianapis.com/search?q="${this.props.topic}"&order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086`)
-    // fetch('http://localhost:3000/articles')    
+    fetch(`http://content.guardianapis.com/search?q="${this.props.topic}"&order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086`)   
     .then(resp => resp.json())
-    // .then(data => console.log(data.response.results.splice(0, 10)))
     .then(data => this.setState({articles: data.response.results.splice(0, 10)}))
   }
 
