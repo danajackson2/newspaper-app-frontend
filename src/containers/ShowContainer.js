@@ -22,15 +22,8 @@ class ShowContainer extends React.Component {
   }
 
   searchUsers = (e) => {
-    // this.setState({searchInput: e.target.value.toLowerCase()})
-    // let target = e.target.value.toLowerCase()
-    // let length = e.target.value.length
-    // if (length < 1) {
-    //   this.setState({filter: this.state.papers})
-    // } else {
       let searchResults = this.state.papers.filter(paper => paper.user.username.toLowerCase().includes(e.target.value))
       this.setState({filter: searchResults})
-    // }
   }
 
   setArticle = (article) => {
