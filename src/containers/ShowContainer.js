@@ -7,6 +7,7 @@ class ShowContainer extends React.Component {
   state = {
     papers: [],
     filter: [],
+    searchInput: "",
     selectedArticle: false
   }
 
@@ -20,15 +21,16 @@ class ShowContainer extends React.Component {
     .catch(() => alert('catch fired ShowContainer'))
   }
 
-  searchUsers = (e, papers) => {
-    let target = e.target.value.toLowerCase()
-    let length = e.target.value.length
-    if (length < 1) {
-      this.setState({filter: this.state.papers})
-    } else {
-      let searchResults = papers.filter(paper => paper.user.username.toLowerCase().substring(0, length) === target)
+  searchUsers = (e) => {
+    // this.setState({searchInput: e.target.value.toLowerCase()})
+    // let target = e.target.value.toLowerCase()
+    // let length = e.target.value.length
+    // if (length < 1) {
+    //   this.setState({filter: this.state.papers})
+    // } else {
+      let searchResults = this.state.papers.filter(paper => paper.user.username.toLowerCase().includes(e.target.value))
       this.setState({filter: searchResults})
-    }
+    // }
   }
 
   setArticle = (article) => {
@@ -60,7 +62,6 @@ class ShowContainer extends React.Component {
 
   render () {
     return (
-//       <div className="row" id="showPageContainer" style={{marginBottom:'100px'}}>
       <div className="container-fluid" id="showPageContainer">
         <div className="row">
             <SideBar papers={this.state.filter} setSelectedPaper={this.props.setSelectedPaper} searchUsers={this.searchUsers} resetArticle={this.resetArticle}/>
