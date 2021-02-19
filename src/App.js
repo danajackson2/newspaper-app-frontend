@@ -44,7 +44,7 @@ class App extends React.Component {
   }
 
   persistUser = (token) => {
-    fetch("http://localhost:3000/persist", {
+    fetch("https://news-choose-backend.herokuapp.com/persist", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ class App extends React.Component {
 
   handleLogin = (e, userData) => {
     e.preventDefault()
-    fetch('http://localhost:3000/login',{
+    fetch('https://news-choose-backend.herokuapp.com/login',{
       method: 'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify(userData)
@@ -74,7 +74,7 @@ class App extends React.Component {
 
   handleSignup = (e, userData) => {
     e.preventDefault()
-    fetch('http://localhost:3000/signup',{
+    fetch('https://news-choose-backend.herokuapp.com/signup',{
       method: 'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify({user:userData})
@@ -90,7 +90,7 @@ class App extends React.Component {
 
   updateUser = (e, user) => {
     e.preventDefault()
-    fetch(`http://localhost:3000/users/${user.id}`, {
+    fetch(`https://news-choose-backend.herokuapp.com/users/${user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json', 
@@ -105,7 +105,7 @@ class App extends React.Component {
   }
 
   deleteUser = (user) => {
-    fetch(`http://localhost:3000/users/${user.id}`, {
+    fetch(`https://news-choose-backend.herokuapp.com/users/${user.id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.token}`

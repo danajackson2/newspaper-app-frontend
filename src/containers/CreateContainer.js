@@ -4,7 +4,7 @@ import ArticlesContainer from './ArticlesContainer'
 import {withRouter} from 'react-router-dom'
 
 const topicsArray = ['Arts', 'Automobiles', 'Books', 'Business', 'Fashion', 'Food', 'Health', 'Home', 'Movies', 'Obituaries', 'Opinion', 'Politics', 'Real Estate', 'Science', 'Sports', 'Technology', 'Theater', 'Travel', 'America', 'World']
-const NEW_PAPER_URL = 'http://localhost:3000/papers'
+const NEW_PAPER_URL = 'https://news-choose-backend.herokuapp.com/papers'
 class CreateContainer extends React.Component {
 
     state={

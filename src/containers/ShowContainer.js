@@ -12,7 +12,7 @@ class ShowContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/papers',{
+    fetch('https://news-choose-backend.herokuapp.com/papers',{
       method: "GET",
       headers: {Authorization: `Bearer ${localStorage.token}`}
     })
