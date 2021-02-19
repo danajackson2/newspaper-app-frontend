@@ -4,7 +4,7 @@ import Search from '../components/Search'
 
 class SideBar extends React.Component {
   render () {
-    const unique = [...new Set(this.props.papers.map(paper => paper.date))]
+    const unique = [...new Set(this.props.papers.map(paper => paper.date))].sort((a,b) => b.localeCompare(a))
     return (
       <div className="col-sm-3" id="sideBar" >
           <h2 style={{textAlign: "center"}}>All Papers</h2>

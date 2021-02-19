@@ -88,7 +88,7 @@ class CreateContainer extends React.Component {
         .then(res => res.json())
         .then(data => {
           this.props.setSelectedPaper(data)
-          this.props.history.push(`/papers/${data.id}`)
+          // this.props.history.push(`/papers/${data.id}`)
         })
       }
     }
