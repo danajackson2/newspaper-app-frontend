@@ -6,7 +6,7 @@ class ArticlesContainer extends React.Component {
 
   fillPaper = () =>{
     let num = this.props.selectedArticles.length
-    fetch('http://content.guardianapis.com/search?order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086')
+    fetch('https://content.guardianapis.com/search?order-by=newest&lang=en&show-fields=bodyText,byline,thumbnail&page-size=20&api-key=7709e833-ae7b-42e8-a90f-6ffd2d974086')
     .then(res => res.json())
     .then(data => {data.response.results.slice(0, 10-num).forEach(a => this.props.handleArticle(a))})
   }
