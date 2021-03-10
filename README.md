@@ -44,6 +44,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 [Dana Jackson](danajackson2.medium.com) - danajackson2@gmail.com
+
 Emma Fewer - emmafewer20@gmail.com
 
 Project Link: [https://github.com/danajackson2/newspaper-app-frontend](https://github.com/danajackson2/newspaper-app-frontend)
