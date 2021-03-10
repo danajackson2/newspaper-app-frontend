@@ -1,6 +1,7 @@
 ## About The Project
 
 News Choose -[news-choose.herokuapp.com](news-choose.herokuapp.com)
+
 News Choose is an app that allows you to design your own newspaper. Using The Guardian's API, pick which topics you'd like to read on and then you can either choose your articles or generate a random set of articles to read. You also have the ability to search for and read other users' papers.
 
 ### Built With
